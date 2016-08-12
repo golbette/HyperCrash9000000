@@ -7,6 +7,9 @@ import com.mygdx.game.HyperCrash;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.title = "HYPER CRASH 5000000";
+		config.height = 600;
+		config.width = 800;
 		new LwjglApplication(new HyperCrash(), config);
 	}
 }
