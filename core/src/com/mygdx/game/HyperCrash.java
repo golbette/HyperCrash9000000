@@ -11,7 +11,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class HyperCrash extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
+	Texture roadImg;
+	Texture skyImg;
+	Texture roadLines;
 	gameEntity player;
 	EnemyCar enemyTest;
 	ArrayList<gameEntity> enemies = new ArrayList<gameEntity>();
@@ -20,20 +22,23 @@ public class HyperCrash extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("bg.png");
+		roadImg = new Texture("bg.png");
+		skyImg = new Texture("sky.png");
 		Texture playerImg = new Texture("car_00.png");
+		Texture enemyImg = new Texture("car_01.png");
 		player =  new gameEntity(playerImg, 400, 10, 1);
-		enemyTest = new EnemyCar(playerImg, 400, 480, .01f);
+		enemyTest = new EnemyCar(enemyImg, 400, 480, .01f);
 		
 	}
 
 	@Override
 	public void render (){
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		handleInput();
 		batch.begin();
-		batch.draw(img, 0, 0, 800, 600);
+		batch.draw(roadImg, 0, 0, 800, 600);
+		batch.draw(skyImg, 1, 0, 800, 600);
 		player.draw(batch);
 		enemyTest.move(player);
 		enemyTest.draw(batch);
