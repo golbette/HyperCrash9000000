@@ -16,6 +16,8 @@ public class HyperCrash extends ApplicationAdapter {
 	Texture roadLines;
 	gameEntity player;
 	EnemyCar enemyTest;
+	roadLines road;
+	roadLines road2;
 	ArrayList<gameEntity> enemies = new ArrayList<gameEntity>();
 	
 	
@@ -26,9 +28,11 @@ public class HyperCrash extends ApplicationAdapter {
 		skyImg = new Texture("sky.png");
 		Texture playerImg = new Texture("car_00.png");
 		Texture enemyImg = new Texture("car_01.png");
+		roadLines = new Texture("roadLines.png");
 		player =  new gameEntity(playerImg, 400, 10, 1);
 		enemyTest = new EnemyCar(enemyImg, 400, 480, .01f);
-		
+		road = new roadLines(roadLines, 403, 600, 1);
+		road2 = new roadLines(roadLines, 403, 1325, 1);
 	}
 
 	@Override
@@ -38,6 +42,8 @@ public class HyperCrash extends ApplicationAdapter {
 		handleInput();
 		batch.begin();
 		batch.draw(roadImg, 0, 0, 800, 600);
+		road.draw(batch, road2);
+		road2.draw(batch, road);
 		batch.draw(skyImg, 1, 0, 800, 600);
 		player.draw(batch);
 		enemyTest.move(player);
